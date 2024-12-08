@@ -22,7 +22,14 @@ public class BigPlayer : MonoBehaviour
             split2.SetActive(true);
             split2.transform.position = notSplit.transform.position;
             split2.transform.position = new Vector3 (split2.transform.position.x + 0.5f, split2.transform.position.y, split2.transform.position.z);
-            notSplit.SetActive(false);
+            StartCoroutine(WaitForSplit(.07f));
+            
         }
+    }
+
+    System.Collections.IEnumerator WaitForSplit(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        notSplit.SetActive(false);
     }
 }

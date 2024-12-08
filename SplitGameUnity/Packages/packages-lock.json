@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.2d.tilemap": {
       "version": "1.0.0",
       "depth": 1,
@@ -10,9 +16,9 @@
       }
     },
     "com.unity.2d.tilemap.extras": {
-      "version": "file:../Packages",
+      "version": "file:2d-extras-2.2.2",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {
         "com.unity.modules.tilemap": "1.0.0",
         "com.unity.2d.tilemap": "1.0.0",

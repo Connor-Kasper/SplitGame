@@ -26,7 +26,7 @@ public class BigPlayer : MonoBehaviour
         //Activates when the space bar is pressed
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            //puts the splits on the scene and sets their x positions to be +- 0.5 what the big split was
+            //puts the splits on the scene and sets their x positions to be +- 0.5 where the big split was
             split1.SetActive(true);
             split1.transform.position = notSplit.transform.position;
             split1.transform.position = new Vector3 (split1.transform.position.x - 0.5f, split1.transform.position.y, split1.transform.position.z);

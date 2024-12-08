@@ -690,6 +690,7 @@ MonoBehaviour:
   notSplit: {fileID: 951797240}
   split1: {fileID: 1978913913}
   split2: {fileID: 1089869169}
+  speed: 5
 --- !u!1 &999953140
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,21 +8,24 @@ public class ControlManager : MonoBehaviour
     public float speed;
     public GameObject split1;
     public GameObject split2;
+    public GameObject notSplit;
     public bool isGrounded;
 
     public LayerMask groundLayer;
     public Transform groundCheck;
-    public float checkRadius = .2f;
+    public Vector2 boxSize = new Vector2(1f, 0.1f);
+    public float gColliderOffset;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        curController = notSplit;
+        rb = curController.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        isGrounded = Physics2D.OverlapBox(new Vector3(groundCheck.position.x, (groundCheck.position.y - gColliderOffset), groundCheck.position.z), boxSize, 0f, groundLayer);
 
 
         rb = curController.GetComponent<Rigidbody2D>();
@@ -48,5 +51,15 @@ public class ControlManager : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
     }
-    
+
+    void OnDrawGizmos()
+    {
+        // Visualize the overlap box in the Scene view
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(new Vector3(groundCheck.position.x, (groundCheck.position.y - gColliderOffset), groundCheck.position.z), boxSize);
+        }
+    }
+
 }

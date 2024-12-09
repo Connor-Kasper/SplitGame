@@ -19,7 +19,6 @@ public class BigPlayer : MonoBehaviour
         split1.SetActive(false);
         split2.SetActive(false);
         controlManager = focusCam.GetComponent<ControlManager>();
-        controlManager.curController = notSplit;
     }
 
     // Update is called once per frame

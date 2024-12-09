@@ -38,7 +38,7 @@ public class BigPlayer : MonoBehaviour
             split2.transform.position = notSplit.transform.position;
             split2.transform.position = new Vector3 (split2.transform.position.x + 0.5f, split2.transform.position.y, split2.transform.position.z);
 
-            //waits for a fraction of a second so they actually start split apart and not just right next to eachother, more for animation and quality sake than anything else.
+            //waits for a fraction of a second so they actually start split apart and not just right next to each other, more for animation and quality sake than anything else.
             StartCoroutine(WaitForSplit(.07f));
 
             

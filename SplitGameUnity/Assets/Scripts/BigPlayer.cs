@@ -6,31 +6,34 @@ public class BigPlayer : MonoBehaviour
     public GameObject notSplit;
     public GameObject split1;
     public GameObject split2;
-    private Rigidbody2D rb;
+    public GameObject focusCam;
+    private GameObject focusObj;
+    private ControlManager controlManager;
 
     [Header("Misc")]
     public float speed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        split1.SetActive(false);
+        split2.SetActive(false);
+        controlManager = focusCam.GetComponent<ControlManager>();
+        controlManager.curController = notSplit;
     }
-    void FixedUpdate()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
-    }
+
     // Update is called once per frame
     void Update()
     {
-        //Activates when the space bar is pressed
-        if(Input.GetKeyDown(KeyCode.Space))
+        //Activates when the q key is pressed
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             //puts the splits on the scene and sets their x positions to be +- 0.5 where the big split was
             split1.SetActive(true);
             split1.transform.position = notSplit.transform.position;
             split1.transform.position = new Vector3 (split1.transform.position.x - 0.5f, split1.transform.position.y, split1.transform.position.z);
 
+            controlManager.curController = split1;
 
             split2.SetActive(true);
             split2.transform.position = notSplit.transform.position;
@@ -49,6 +52,7 @@ public class BigPlayer : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         //setting the big dude to false
+        
         notSplit.SetActive(false);
     }
 }

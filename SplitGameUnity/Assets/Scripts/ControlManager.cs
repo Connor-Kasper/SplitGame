@@ -13,13 +13,14 @@ public class ControlManager : MonoBehaviour
 
     public LayerMask groundLayer;
     public Transform groundCheck;
-    public Vector2 boxSize = new Vector2(1f, 0.1f);
+    public Vector2 boxSize = new Vector2(1.1f, 0.01f);
     public float gColliderOffset;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         curController = notSplit;
         rb = curController.GetComponent<Rigidbody2D>();
+        split1.layer = default;
     }
 
     // Update is called once per frame
@@ -34,20 +35,24 @@ public class ControlManager : MonoBehaviour
 
         if(curController == notSplit)
         {
-            boxSize = new Vector2(1.8f, 0.1f);
+            boxSize = new Vector2(1.8f, 0.01f);
         }
         if (curController == split1 || curController == split2)
         {
-            boxSize = new Vector2(.8f, 0.1f);
+            boxSize = new Vector2(.8f, 0.01f);
         }
 
 
         if (curController == split1 && Input.GetKeyDown(KeyCode.E))
         {
             curController = split2;
+            split1.layer = 6;
+            split2.layer = default;
         } else if (curController == split2 && Input.GetKeyDown(KeyCode.E))
         {
             curController = split1;
+            split2.layer = 6;
+            split1.layer = default;
         }
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)

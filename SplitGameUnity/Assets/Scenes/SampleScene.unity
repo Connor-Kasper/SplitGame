@@ -1235,7 +1235,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 1450284999}
-  checkRadius: 2
+  checkRadius: 1.8
 --- !u!61 &1450285001
 BoxCollider2D:
   m_ObjectHideFlags: 0

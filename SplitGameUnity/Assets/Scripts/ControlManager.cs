@@ -30,8 +30,19 @@ public class ControlManager : MonoBehaviour
 
         rb = curController.GetComponent<Rigidbody2D>();
         transform.position = curController.transform.position;
-        
-        if(curController == split1 && Input.GetKeyDown(KeyCode.E))
+
+
+        if(curController == notSplit)
+        {
+            boxSize = new Vector2(1.8f, 0.1f);
+        }
+        if (curController == split1 || curController == split2)
+        {
+            boxSize = new Vector2(.8f, 0.1f);
+        }
+
+
+        if (curController == split1 && Input.GetKeyDown(KeyCode.E))
         {
             curController = split2;
         } else if (curController == split2 && Input.GetKeyDown(KeyCode.E))

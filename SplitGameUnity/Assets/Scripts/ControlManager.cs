@@ -27,12 +27,15 @@ public class ControlManager : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
+        //Makes a ray box and checks if it is touching a ground object
         isGrounded = Physics2D.OverlapBox(new Vector3(groundCheck.position.x, (groundCheck.position.y - gColliderOffset), groundCheck.position.z), boxSize, 0f, groundLayer);
 
+        //turns rb to be the current player character
         rb = curController.GetComponent<Rigidbody2D>();
+        //Puts the Focus Cam at the position of the current character
         transform.position = curController.transform.position;
 
-
+        //Determines the box size for the isGrounded
         if(curController == notSplit) {
 
             boxSize = new Vector2(1.8f, 0.01f);
@@ -43,7 +46,7 @@ public class ControlManager : MonoBehaviour
             boxSize = new Vector2(.8f, 0.01f);
         }
 
-
+        //Makes the splits part of the ground if they are not the current character
         if (curController == split1 && Input.GetKeyDown(KeyCode.E)) {
 
             curController = split2;
@@ -59,6 +62,7 @@ public class ControlManager : MonoBehaviour
             split1.layer = default;
         }
 
+        //Jump!
         if (Input.GetKeyDown(KeyCode.W) && isGrounded) {
 
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -66,8 +70,9 @@ public class ControlManager : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {
-
+    void FixedUpdate() 
+    {
+        //Moves Char Left/Right
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
     }

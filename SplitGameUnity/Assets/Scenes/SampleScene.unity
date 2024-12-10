@@ -435,7 +435,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.139997, y: 4.3914094, z: -5}
+  m_LocalPosition: {x: -5.139997, y: 4.3914175, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 666003745}
   - component: {fileID: 666003744}
   - component: {fileID: 666003743}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.039024085}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -535,7 +535,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.92195123}
   m_EdgeRadius: 0
 --- !u!212 &666003744
 SpriteRenderer:
@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 1089869174}
   m_Layer: 6
   m_Name: Split2
-  m_TagString: Untagged
+  m_TagString: Split2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6014,9 +6014,10 @@ GameObject:
   - component: {fileID: 1978913914}
   - component: {fileID: 1978913916}
   - component: {fileID: 1978913917}
+  - component: {fileID: 1978913918}
   m_Layer: 6
   m_Name: Split1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6164,6 +6165,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1978913918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978913913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f567d82adaf4b924ab31fcac3ecce407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 0
+  groundTag: Ground
+  playerTag: Split2
+  split1: {fileID: 1978913913}
+  split2: {fileID: 1089869169}
+  notSplit: {fileID: 951797240}
+  focusCam: {fileID: 1450284997}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

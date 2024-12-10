@@ -31,35 +31,35 @@ public class JoinSplits : MonoBehaviour
         if ((controlManager.curController == split1 || controlManager.curController == split2) && Input.GetKeyDown(KeyCode.Q))
         {
             //This sends out the rays from the top and bottom of split1 depending on the direction of split2
-
+            LayerMask oldLayer = split1.layer;
             split1.layer = 2;
 
             RaycastHit2D hitTop = Physics2D.Raycast(topPosition, rayDirection, rayLength);
             RaycastHit2D hitBottom = Physics2D.Raycast(bottomPosition, rayDirection, rayLength);
 
-            split1.layer = default;
+            split1.layer = oldLayer;
 
             Debug.DrawRay(topPosition, rayDirection * rayLength, Color.red, 0.5f);
             Debug.DrawRay(bottomPosition, rayDirection * rayLength, Color.blue, 0.5f);
 
-            Debug.Log(hitTop.collider.gameObject.tag);
+            //Debug.Log(hitTop.collider.gameObject.tag);
 
             //checks if there was any hits on a player from either raycast
             if (hitTop.collider != null)
             {
                 if (hitTop.collider.CompareTag(groundTag))
                 {
-                    Debug.Log("Ray hit the ground above, stopping!");
+                    //Debug.Log("Ray hit the ground above, stopping!");
                     return; // Stop further execution
                 }
                 if (hitTop.collider.CompareTag(playerTag))
                 {
-                    Debug.Log("Found a player above!");
+                    //Debug.Log("Found a player above!");
                 }
             }
             else
             {
-                Debug.Log("Top Didn't hit anything");
+                //Debug.Log("Top Didn't hit anything");
             }
 
             // Handle the bottom raycast
@@ -67,18 +67,18 @@ public class JoinSplits : MonoBehaviour
             {
                 if (hitBottom.collider.CompareTag(groundTag))
                 {
-                    Debug.Log("Ray hit the ground below, stopping!");
+                    //Debug.Log("Ray hit the ground below, stopping!");
                     return; // Stop further execution
                 }
                 if (hitBottom.collider.CompareTag(playerTag))
                 {
-                    Debug.Log("Found a player below!");
+                    //Debug.Log("Found a player below!");
                     Join();
                 }
             }
             else
             {
-                Debug.Log("Bottom Didn't hit anything");
+                //Debug.Log("Bottom Didn't hit anything");
             }
 
 

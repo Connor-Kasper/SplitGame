@@ -8,10 +8,11 @@ public class BigPlayer : MonoBehaviour
     public GameObject split2;
     public GameObject focusCam;
     private GameObject focusObj;
-    private ControlManager controlManager;
 
     [Header("Misc")]
+    private ControlManager controlManager;
     public float speed;
+    public bool cooldownUp = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +26,7 @@ public class BigPlayer : MonoBehaviour
     void Update()
     {
         //Activates when the q key is pressed
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && cooldownUp)
         {
             //puts the splits on the scene and sets their x positions to be +- 0.5 where the big split was
             split1.SetActive(true);
@@ -33,6 +34,7 @@ public class BigPlayer : MonoBehaviour
             split1.transform.position = new Vector3 (split1.transform.position.x - 0.5f, split1.transform.position.y, split1.transform.position.z);
 
             controlManager.curController = split1;
+            
 
             split2.SetActive(true);
             split2.transform.position = notSplit.transform.position;
@@ -53,5 +55,20 @@ public class BigPlayer : MonoBehaviour
         //setting the big dude to false
         
         notSplit.SetActive(false);
+        split2.layer = 6;
+        split1.layer = default;
+    }
+
+    public void JustSplit(float waitTime)
+    {
+        StartCoroutine(SplitCooldown(waitTime));
+    }
+
+    public System.Collections.IEnumerator SplitCooldown(float waitTime)
+    {
+        Debug.Log("Started Cooldown");
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("Finished Cooldown");
+        cooldownUp = true;
     }
 }

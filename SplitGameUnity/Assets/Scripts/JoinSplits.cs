@@ -11,11 +11,15 @@ public class JoinSplits : MonoBehaviour
     public GameObject split2;
     public GameObject notSplit;
     public GameObject focusCam;
+    private BigPlayer BigScript;
+    public float cooldownTime = 3.0f;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controlManager = focusCam.GetComponent<ControlManager>();
+        BigScript = notSplit.GetComponent<BigPlayer>();
     }
 
     // Update is called once per frame
@@ -74,7 +78,13 @@ public class JoinSplits : MonoBehaviour
         controlManager.curController = notSplit;
         notSplit.transform.position = new Vector2((transform.position.x + split2.transform.position.x) / 2, (transform.position.y + split2.transform.position.y) / 2);
 
+        BigScript.cooldownUp = false;
+        BigScript.JustSplit(cooldownTime);
+
         split2.SetActive(false);
         split1.SetActive(false);
+
     }
+
+    
 }

@@ -47,38 +47,20 @@ public class JoinSplits : MonoBehaviour
             //checks if there was any hits on a player from either raycast
             if (hitTop.collider != null)
             {
-                if (hitTop.collider.CompareTag(groundTag))
+                if (hitTop.collider.CompareTag(groundTag) || hitBottom.collider.CompareTag(groundTag))
                 {
                     //Debug.Log("Ray hit the ground above, stopping!");
                     return; // Stop further execution
                 }
-                if (hitTop.collider.CompareTag(playerTag))
+                if (hitTop.collider.CompareTag(playerTag) || hitBottom.collider.CompareTag(playerTag))
                 {
+                    Join();
                     //Debug.Log("Found a player above!");
                 }
             }
             else
             {
                 //Debug.Log("Top Didn't hit anything");
-            }
-
-            // Handle the bottom raycast
-            if (hitBottom.collider != null)
-            {
-                if (hitBottom.collider.CompareTag(groundTag))
-                {
-                    //Debug.Log("Ray hit the ground below, stopping!");
-                    return; // Stop further execution
-                }
-                if (hitBottom.collider.CompareTag(playerTag))
-                {
-                    //Debug.Log("Found a player below!");
-                    Join();
-                }
-            }
-            else
-            {
-                //Debug.Log("Bottom Didn't hit anything");
             }
 
 

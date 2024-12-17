@@ -38,12 +38,12 @@ public class ControlManager : MonoBehaviour
         //Determines the box size for the isGrounded
         if(curController == notSplit) {
 
-            boxSize = new Vector2(1.8f, 0.01f);
+            boxSize = new Vector2(1.8f, 0.1f);
         }
 
         if (curController == split1 || curController == split2) {
 
-            boxSize = new Vector2(.8f, 0.01f);
+            boxSize = new Vector2(.8f, 0.1f);
         }
 
         //Makes the splits part of the ground if they are not the current character
